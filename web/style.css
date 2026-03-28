@@ -1,0 +1,293 @@
+/* Snoopy — Glassmorphism Report Theme */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    background: #0a0a1a;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(56, 103, 214, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(0, 210, 211, 0.08) 0%, transparent 50%);
+    color: #e0e0e0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Particle background — very subtle */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main layout */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+/* Glass card base */
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Header card */
+.header-card {
+    text-align: center;
+    padding: 40px 28px 32px;
+    background: linear-gradient(135deg, rgba(56, 103, 214, 0.08), rgba(138, 43, 226, 0.06));
+    border-color: rgba(100, 140, 255, 0.12);
+}
+
+.logo {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(100, 140, 255, 0.3);
+}
+
+.logo-accent {
+    font-weight: 300;
+    color: rgba(100, 180, 255, 0.8);
+    margin-left: 8px;
+}
+
+.subtitle {
+    font-size: 0.85em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 6px;
+}
+
+/* Card headers */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-header h2 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+.card-header button {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: inherit;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.card-header button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Results list */
+.report-card ol {
+    list-style: none;
+    counter-reset: results;
+    padding: 0;
+}
+
+.report-card li {
+    counter-increment: results;
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    margin: 4px 0;
+    border-radius: 10px;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.report-card li::before {
+    content: counter(results);
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(100, 140, 255, 0.1);
+    border: 1px solid rgba(100, 140, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: rgba(100, 180, 255, 0.8);
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.report-card li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(4px);
+}
+
+.result-flag {
+    font-size: 1.1em;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.result-link {
+    color: rgba(130, 180, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.2s;
+}
+
+.result-link:hover {
+    color: #64d2ff;
+    text-shadow: 0 0 12px rgba(100, 210, 255, 0.3);
+}
+
+/* Meta card */
+.meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+}
+
+.meta-label {
+    font-size: 0.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 4px;
+}
+
+.meta-value {
+    font-size: 1em;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.meta-value.accent {
+    color: #64d2ff;
+    text-shadow: 0 0 20px rgba(100, 210, 255, 0.2);
+}
+
+.geo-bar {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Footer */
+.footer-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.footer-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.25s;
+}
+
+.footer-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(100, 140, 255, 0.3);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(100, 140, 255, 0.15);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 16px 12px 32px;
+    }
+    .glass-card {
+        padding: 18px 16px;
+        border-radius: 12px;
+    }
+    .meta-grid {
+        grid-template-columns: 1fr;
+    }
+    .logo {
+        font-size: 1.8em;
+    }
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
